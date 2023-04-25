@@ -1,6 +1,6 @@
 .navbar-container {
     width: 25%;
-    /* height: 100vh; */
+    height: 100vh;
     /* background-color: red; */
     border-right: 2px solid #e0e1ea;
     display: flex;

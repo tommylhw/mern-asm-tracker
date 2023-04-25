@@ -5,14 +5,16 @@ import axios from 'axios';
 
 import { TextField } from '@mui/material'; 
 
-const CreatePage = () => {
+const AddPage = () => {
 
   const navigate = useNavigate();
 
     const [form, setForm] = useState({
-        code: "",
-        credit: "",
-        gpa: "",
+        title: "",
+        course: "",
+        due_date: "",
+        due_time: "",
+        status: ""
     });
 
     const updateForm = (value) => {
@@ -26,12 +28,14 @@ const CreatePage = () => {
         console.log("handleSubmit");
 
         axios
-            .post('http://localhost:4000/api/database', form)
+            .post('http://localhost:4000/api/database/', form)
             .then((res) => {
                 setForm({
-                    code: "",
-                    credit: "",
-                    gpa: "",
+                    title: "",
+                    course: "",
+                    due_date: "",
+                    due_time: "",
+                    status: ""
                 });
 
                 navigate('/');
@@ -42,7 +46,7 @@ const CreatePage = () => {
     }
 
   return (
-    <div>
+    <div className='add-page-container'>
       <div className='form-container'>
           <form onSubmit={handleSubmit}>
               <label htmlFor='title'>Assignment Title</label>
@@ -54,21 +58,51 @@ const CreatePage = () => {
                   onChange={(e) => updateForm({[e.target.id]: e.target.value})}
               /> */}
 
-              <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+              <input 
+                type='text' 
+                id='title'
+                className='input-field'
+                value={form.title}
+                onChange={(e) => updateForm({[e.target.id]: e.target.value})}
+              />
 
-              <label htmlFor='credit'>Credit</label>
-              <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
-              <label htmlFor='gpa'>GPA</label>
-              <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
-              <button type='submit'>Create</button>
+              <label htmlFor='credit'>course</label>
+              <input 
+                type='text' 
+                id='course'
+                className='input-field'
+                value={form.course}
+                onChange={(e) => updateForm({[e.target.id]: e.target.value})}
+              />
+
+              <label htmlFor='gpa'>due_date</label>
+              <input 
+                type='text' 
+                id='due_date'
+                className='input-field'
+                value={form.due_date}
+                onChange={(e) => updateForm({[e.target.id]: e.target.value})}
+              />
+
+                <label htmlFor='gpa'>due_date</label>
+                <input 
+                    type='text' 
+                    id='due_time'
+                    className='input-field'
+                    value={form.due_time}
+                    onChange={(e) => updateForm({[e.target.id]: e.target.value})}
+                />
+
+              <button type='submit' className='btn-submit'>Create</button>
               
           </form>
+
       </div>
     </div>
     
   )
 }
 
-export default CreatePage;
+export default AddPage;
