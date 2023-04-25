@@ -1,0 +1,12 @@
+.list-container {
+    width: 100%;
+    border: 2px solid red;
+}
+
+tr {
+    width: 100%;
+}
+
+td {
+    padding: 10px 0;
+}

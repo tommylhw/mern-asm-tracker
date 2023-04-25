@@ -1,0 +1,13 @@
+.navbar-container {
+    width: 25%;
+    /* height: 100vh; */
+    /* background-color: red; */
+    border-right: 2px solid #e0e1ea;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-add {
+    /* width: 80%; */
+}
