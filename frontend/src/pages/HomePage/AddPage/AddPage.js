@@ -23,12 +23,12 @@ const AddPage = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("handleSubmit");
 
-        axios
-            .post('http://localhost:4000/api/database/', form)
+        /* axios
+            .post('http://localhost:4000/api/database/', JSON.stringify(form))
             .then((res) => {
                 setForm({
                     title: "",
@@ -42,7 +42,15 @@ const AddPage = () => {
             })
             .catch((error) => {
                 console.log("Error in creating record");
-            })
+            }) */
+
+        const response = await fetch('/api/database/', {
+            method: 'POST',
+            body: JSON.stringify(form),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     }
 
   return (

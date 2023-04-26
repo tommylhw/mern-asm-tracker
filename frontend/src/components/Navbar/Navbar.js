@@ -3,15 +3,25 @@ import React, { useState, useEffect } from 'react';
 import '../Navbar/Navbar.css';
 
 import Button from '@mui/material/Button';
-// import theme from '../../constant/theme';
-// import { ThemeProvider } from '@emotion/react';
+import NavItem from '../NavItem/NavItem';
 
 const Navbar = () => {
 
   // const navigate = useNavigate();
 
+  // const navItem = ["Home", "Progress", "Setting", "Profile", "Logout"];
+  const navItem = [
+    {
+      text: "Home",
+      route: "/"
+    },
+    {
+      text: "Progress",
+      route: "/progress"
+    }
+  ]
+
   return (
-    // <ThemeProvider theme={theme}>
       <div className='navbar-container'>
         
         <Link to='/add'>
@@ -26,11 +36,22 @@ const Navbar = () => {
           </Button>
 
         </Link>
+
+        <div>
+          {
+            navItem.map(data => (
+              <NavItem 
+                text={data.text}
+                route={data.route}
+              />
+            ))
+          }
+          
+        </div>
         
 
 
       </div>
-    // </ThemeProvider>
     
   )
 }
